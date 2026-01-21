@@ -1,0 +1,7 @@
+{
+  "name": "Anand Printek Enterprise",
+  "description": "Comprehensive educational and printing solutions partner website, featuring e-commerce capabilities, bulk order systems, and AI-powered customer assistance.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
