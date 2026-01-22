@@ -9,6 +9,10 @@ export interface Product {
   description: string;
   features?: string[];
   isFeatured?: boolean;
+  gstRate?: number;
+  hsnCode?: string;
+  specifications?: Record<string, string>;
+  minQuantity?: number;
 }
 
 export interface CartItem extends Product {
@@ -32,6 +36,7 @@ export interface Category {
   name: string;
   icon: string;
   subcategories: string[];
+  description?: string;
 }
 
 export interface ContactInfo {

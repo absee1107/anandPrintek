@@ -14,6 +14,7 @@ interface AppContextType {
   addOrder: (order: Omit<Order, 'id' | 'date' | 'status'>) => void;
   updateProduct: (product: Product) => void;
   addProduct: (product: Product) => void;
+  deleteProduct: (productId: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -85,14 +86,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const addProduct = (newProduct: Product) => {
-    setProducts(prev => [...prev, newProduct]);
+    setProducts(prev => {
+      const exists = prev.some(p => p.id === newProduct.id);
+      if (exists) return prev;
+      return [...prev, newProduct];
+    });
+  };
+
+  const deleteProduct = (productId: string) => {
+    setProducts(prev => prev.filter(p => p.id !== productId));
   };
 
   return (
     <AppContext.Provider value={{ 
       products, cart, orders, 
       addToCart, removeFromCart, updateCartQuantity, clearCart, 
-      addOrder, updateProduct, addProduct 
+      addOrder, updateProduct, addProduct, deleteProduct 
     }}>
       {children}
     </AppContext.Provider>
