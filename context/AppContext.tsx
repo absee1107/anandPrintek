@@ -1,10 +1,11 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Product, CartItem, Order } from '../types';
-import { INITIAL_PRODUCTS } from '../constants';
+import { Product, CartItem, Order, Category } from '../types';
+import { INITIAL_PRODUCTS, CATEGORIES } from '../constants';
 
 interface AppContextType {
   products: Product[];
+  categories: Category[];
   cart: CartItem[];
   orders: Order[];
   addToCart: (product: Product) => void;
@@ -15,6 +16,9 @@ interface AppContextType {
   updateProduct: (product: Product) => void;
   addProduct: (product: Product) => void;
   deleteProduct: (productId: string) => void;
+  updateCategory: (category: Category) => void;
+  addCategory: (category: Category) => void;
+  deleteCategory: (categoryId: string) => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -23,6 +27,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [products, setProducts] = useState<Product[]>(() => {
     const saved = localStorage.getItem('ap_products');
     return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
+  });
+
+  const [categories, setCategories] = useState<Category[]>(() => {
+    const saved = localStorage.getItem('ap_categories');
+    return saved ? JSON.parse(saved) : CATEGORIES;
   });
 
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -38,6 +47,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     localStorage.setItem('ap_products', JSON.stringify(products));
   }, [products]);
+
+  useEffect(() => {
+    localStorage.setItem('ap_categories', JSON.stringify(categories));
+  }, [categories]);
 
   useEffect(() => {
     localStorage.setItem('ap_cart', JSON.stringify(cart));
@@ -86,22 +99,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const addProduct = (newProduct: Product) => {
-    setProducts(prev => {
-      const exists = prev.some(p => p.id === newProduct.id);
-      if (exists) return prev;
-      return [...prev, newProduct];
-    });
+    setProducts(prev => [...prev, newProduct]);
   };
 
   const deleteProduct = (productId: string) => {
     setProducts(prev => prev.filter(p => p.id !== productId));
   };
 
+  const updateCategory = (updated: Category) => {
+    setCategories(prev => prev.map(c => c.id === updated.id ? updated : c));
+  };
+
+  const addCategory = (newCat: Category) => {
+    setCategories(prev => [...prev, newCat]);
+  };
+
+  const deleteCategory = (categoryId: string) => {
+    setCategories(prev => prev.filter(c => c.id !== categoryId));
+  };
+
   return (
     <AppContext.Provider value={{ 
-      products, cart, orders, 
+      products, categories, cart, orders, 
       addToCart, removeFromCart, updateCartQuantity, clearCart, 
-      addOrder, updateProduct, addProduct, deleteProduct 
+      addOrder, updateProduct, addProduct, deleteProduct,
+      updateCategory, addCategory, deleteCategory
     }}>
       {children}
     </AppContext.Provider>

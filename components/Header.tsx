@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Menu, X, ShoppingCart, Phone, Search, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useApp } from '../context/AppContext';
+import { GST_NUMBER } from '../constants';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,14 +12,15 @@ const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="bg-primary text-white py-2 px-4 text-sm flex justify-between items-center overflow-x-auto whitespace-nowrap">
-        <div className="flex gap-4">
-          <span className="flex items-center gap-1"><Phone size={14} /> +91 9973707263</span>
-          <span className="hidden sm:inline">| Serving Schools & Businesses Nationwide</span>
+      <div className="bg-primary text-white py-2 px-4 text-xs flex justify-between items-center overflow-x-auto whitespace-nowrap">
+        <div className="flex gap-4 items-center">
+          <span className="flex items-center gap-1 font-bold"><Phone size={12} /> +91 9973727063</span>
+          <span className="hidden sm:inline opacity-50">|</span>
+          <span className="hidden sm:inline">GST: {GST_NUMBER}</span>
         </div>
         <div className="flex gap-4 items-center">
           <Link to="/admin" className="flex items-center gap-1 hover:text-secondary transition-colors font-medium">
-            <Settings size={14} /> Admin Panel
+            <Settings size={12} /> Admin Panel
           </Link>
           <span className="opacity-30">|</span>
           <Link to="/quote" className="hover:text-secondary transition-colors font-bold">Get Bulk Quote</Link>

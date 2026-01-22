@@ -8,12 +8,37 @@ export const COLORS = {
   neutral: '#6B7280',
 };
 
+export const GST_NUMBER = '20CKLPS7146C1Z8';
+
+export const SOCIAL_LINKS = {
+  instagram: 'https://www.instagram.com/anandprintek',
+  facebook: 'https://www.facebook.com/anandprintek',
+  youtube: 'https://www.YouTube.com/@anandprintek',
+  whatsapp_primary: 'https://wa.me/919973727063',
+  whatsapp_secondary: 'https://wa.me/919113418419'
+};
+
+export const BRANCHES = [
+  {
+    name: 'Main HQ - Dhanbad',
+    address: 'CO Gyan Prakash Jha, H. No. 202A, Kenduapul Jharia Road, Near Durga Mandir, Dhanbad, Jharkhand - 826001',
+    landmark: 'Shakti Decorator Godown',
+    phone: '+91 9973727063'
+  },
+  {
+    name: 'Govindpur Branch',
+    manager: 'Shashank Abhishek',
+    address: 'So Sri Gyan Prakash Jha, Bankali Road, Govindpur, BANKALI VATiKA DREAMLINE PUBLIC SCHOOL, GOBINDPUR, JHARKHAND 828109',
+    phone: '+91 8130985250'
+  }
+];
+
 export const CONTACTS: ContactInfo[] = [
-  { label: 'Supervisor', number: '+91 9973707263', icon: 'phone' },
+  { label: 'Primary WhatsApp', number: '+91 9973727063', icon: 'phone' },
+  { label: 'Govindpur Branch', number: '+91 8130985250', icon: 'phone' },
+  { label: 'Admin Support', number: '+91 9113418419', icon: 'phone' },
   { label: 'Staff Support', number: '+91 7982718343', icon: 'phone' },
-  { label: 'Administration', number: '+91 9113418419', icon: 'phone' },
   { label: 'Enterprise Owner', number: '+91 6203663244', icon: 'phone' },
-  { label: 'Technical Expert', number: '+91 8130985250', icon: 'phone' },
 ];
 
 export const CATEGORIES: Category[] = [
@@ -21,164 +46,122 @@ export const CATEGORIES: Category[] = [
     id: 'printing',
     name: 'Printing Services',
     icon: 'Printer',
-    description: 'Complete printing, stationery and educational material supply.',
-    subcategories: ['Offset Printing', 'Flex & Vinyl', 'ID Cards', 'Magazines', 'Corporate Stationery', 'Large Format Printing']
+    description: 'Complete high-volume institutional printing solutions.',
+    subcategories: ['Offset Printing', 'Flex & Vinyl', 'ID Cards', 'Annual Magazines', 'Admission Kits']
   },
   {
-    id: 'lab',
-    name: 'Lab & Science',
-    icon: 'Beaker',
-    description: 'Scientific equipment and kits for schools and universities.',
-    subcategories: ['Physics Lab', 'Chemistry Kits', 'Biology Models', 'Microscopes', 'Anatomical Models']
+    id: 'stem',
+    name: 'STEM & Robotics',
+    icon: 'Zap',
+    description: 'Cutting-edge educational technology and robotics kits.',
+    subcategories: ['Arduino Kits', 'STEM Construction', 'Coding Tools', 'Scientific Models']
+  },
+  {
+    id: 'furniture',
+    name: 'School Furniture',
+    icon: 'Layout',
+    description: 'Ergonomic and durable furniture for modern classrooms.',
+    subcategories: ['Student Desks', 'Teacher Tables', 'Library Racks', 'Lab Benches']
   },
   {
     id: 'it',
-    name: 'IT & Digital',
+    name: 'Digital Infrastructure',
     icon: 'Monitor',
-    description: 'Smart classroom solutions and hardware infrastructure.',
-    subcategories: ['Interactive Panels', 'CCTV Systems', 'Laptops/PCs', 'Projectors', 'Language Lab Equipment']
-  },
-  {
-    id: 'edu-services',
-    name: 'Educational Services',
-    icon: 'BookOpen',
-    description: 'Complete educational material supply and printing services.',
-    subcategories: ['Exam Papers', 'Academic Year Printing', 'Admission & Prospectus', 'Certificates']
+    description: 'IT hardware and smart classroom digital systems.',
+    subcategories: ['Interactive Panels', 'CCTV Systems', 'Laptops', 'Network Solutions']
   },
   {
     id: 'textiles',
-    name: 'Uniforms & Textiles',
+    name: 'Textiles & Sports',
     icon: 'Shirt',
-    description: 'Durable and customized school uniforms and sports gear.',
-    subcategories: ['School Uniforms', 'Sports Kits', 'Blazers', 'House T-Shirts']
+    description: 'High-quality uniforms and professional sports equipment.',
+    subcategories: ['School Uniforms', 'Sports Gear', 'House Blazers', 'Band Uniforms']
   },
   {
-    id: 'university',
-    name: 'University Supplies',
-    icon: 'GraduationCap',
-    description: 'Complete university and college specialized supplies.',
-    subcategories: ['Research Materials', 'Seminar & Conference', 'Degree Certificates', 'Campus Signage']
+    id: 'stationery',
+    name: 'Bulk Stationery',
+    icon: 'PenTool',
+    description: 'Institutional grade office and classroom supplies.',
+    subcategories: ['Exercise Books', 'Office Files', 'Art Supplies', 'Exam Sheets']
   }
 ];
 
 export const INITIAL_PRODUCTS: Product[] = [
-  // --- EDUCATIONAL SERVICES / EXAM PAPERS ---
   {
-    id: 'EXAM-SEAS-001',
-    name: 'Seasonal Exam Paper Printing (Secure)',
-    category: 'edu-services',
-    subcategory: 'Exam Papers',
-    price: 1500,
+    id: 'STEM-001',
+    name: 'Advanced Robotics Discovery Kit',
+    category: 'stem',
+    subcategory: 'Arduino Kits',
+    price: 8450,
+    image: 'https://images.unsplash.com/photo-1535378917042-10a22c95931a?auto=format&fit=crop&q=80&w=800',
+    description: 'A comprehensive Arduino-based robotics kit including 20+ sensors and programmable logic.',
+    features: ['Python Compatible', 'Wireless Control', 'Project Guide Included'],
+    gstRate: 18,
+    hsnCode: '9023',
+    isFeatured: true,
+    stockStatus: 'In Stock',
+    tags: ['Best Seller', 'New Arrival']
+  },
+  {
+    id: 'FURN-102',
+    name: 'ErgoDual Classroom Desk Set',
+    category: 'furniture',
+    subcategory: 'Student Desks',
+    price: 3200,
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800',
+    description: 'Heavy-duty steel frame dual student desk with height adjustment and storage compartments.',
+    features: ['Scratch Resistant', 'Adjustable Height', 'Padded Seating'],
+    gstRate: 18,
+    hsnCode: '9403',
+    isFeatured: true,
+    stockStatus: 'In Stock'
+  },
+  {
+    id: 'PRNT-201',
+    name: 'Premium School Prospectus (1000 Pack)',
+    category: 'printing',
+    subcategory: 'Admission Kits',
+    price: 25000,
     image: 'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80&w=800',
-    description: 'Printing of seasonal exam papers with security features. Custom question paper design and secure packaging.',
-    features: ['Confidential Printing', 'Security Watermarks', 'Sealed Envelopes'],
-    gstRate: 18,
-    hsnCode: '9988',
-    isFeatured: true
-  },
-  {
-    id: 'DIARY-SCH-001',
-    name: 'Customized School Diary (Academic)',
-    category: 'edu-services',
-    subcategory: 'Academic Year Printing',
-    price: 85,
-    image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&q=80&w=800',
-    description: 'Personalized school diaries with timetable, rules, and daily notes sections. 70GSM white paper.',
-    features: ['Hard Cover', 'Custom Branding', 'Daily Planner Layout'],
+    description: 'Full-color high-gloss school prospectus with custom design and high-quality paper.',
+    features: ['A4 Size', 'Gloss Lamination', 'Premium Art Paper'],
     gstRate: 12,
-    hsnCode: '4820',
-    isFeatured: true
-  },
-
-  // --- LAB & SCIENCE ---
-  {
-    id: 'SCI-SOLAR-001',
-    name: '3D Solar System Educational Model',
-    category: 'lab',
-    subcategory: 'Biology Models',
-    price: 2500,
-    image: 'https://images.unsplash.com/photo-1446776653964-20c1d3a81b06?auto=format&fit=crop&q=80&w=800',
-    description: 'Realistic 3D solar system model with detailed planets. Perfect for science labs.',
-    features: ['LED Lighting', 'Wooden Base', 'Detailed Scale'],
-    gstRate: 12,
-    hsnCode: '9023'
+    hsnCode: '4901',
+    isFeatured: true,
+    stockStatus: 'In Stock'
   },
   {
-    id: 'UNI-MICRO-001',
-    name: 'Research-Grade Digital Microscope',
-    category: 'lab',
-    subcategory: 'Microscopes',
-    price: 125000,
-    image: 'https://images.unsplash.com/photo-1582719202047-76d3432ee323?auto=format&fit=crop&q=80&w=800',
-    description: 'High-end microscope for university laboratories. Features 1000X magnification and digital capture.',
-    features: ['Digital Interface', 'Achromatic Optics', 'High Resolution'],
-    gstRate: 18,
-    hsnCode: '9011',
-    isFeatured: true
-  },
-
-  // --- IT & DIGITAL ---
-  {
-    id: 'IT-TOUCH-075',
-    name: '75" 4K Interactive Smart Panel',
+    id: 'IT-505',
+    name: '4K Ultra-HD Interactive Panel 86"',
     category: 'it',
     subcategory: 'Interactive Panels',
-    price: 115000,
+    price: 145000,
     image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800',
-    description: 'Complete interactive solution for smart classrooms. Supports Android & Windows dual OS.',
-    features: ['20 Point Touch', '4K UHD Resolution', 'Teaching Software'],
+    description: 'Next-generation smart teaching board with 20-point multi-touch and built-in Android OS.',
+    features: ['Anti-Glare Glass', 'Wireless Casting', 'Teaching Software Suite'],
     gstRate: 18,
     hsnCode: '8528',
-    isFeatured: true
+    isFeatured: true,
+    stockStatus: 'Low Stock'
   },
-
-  // --- PRINTING SERVICES ---
   {
-    id: 'PR-HOARD-01',
-    name: 'Institutional Large Format Hoarding',
-    category: 'printing',
-    subcategory: 'Large Format Printing',
-    price: 6500,
-    image: 'https://images.unsplash.com/photo-1565689221354-d87f85d4aee2?auto=format&fit=crop&q=80&w=800',
-    description: '10x20 ft high-quality flex hoarding for school announcements and branding.',
-    features: ['Weatherproof', 'UV Protected Ink', 'Reinforced Grommets'],
-    gstRate: 18,
-    hsnCode: '4901'
-  },
-
-  // --- UNIVERSITY SUPPLIES ---
-  {
-    id: 'UNI-THESIS-001',
-    name: 'Professional Thesis Binding Service',
-    category: 'university',
-    subcategory: 'Research Materials',
-    price: 450,
-    image: 'https://images.unsplash.com/photo-1531346688376-ab6275c4725e?auto=format&fit=crop&q=80&w=800',
-    description: 'Gold-foiled hard binding for research papers and PhD dissertations.',
-    features: ['Leatherette Finish', 'Gold/Silver Embossing', 'Archival Quality'],
-    gstRate: 18,
-    hsnCode: '9987',
-    isFeatured: true
-  },
-  
-  // --- TEXTILES ---
-  {
-    id: 'TX-UNI-B',
-    name: 'Standard Secondary Uniform (Boys)',
+    id: 'TXT-901',
+    name: 'Secondary School Blazer (Pack of 50)',
     category: 'textiles',
-    subcategory: 'School Uniforms',
-    price: 1250,
-    image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&q=80&w=800',
-    description: 'Comfortable cotton-poly blend shirt and trouser set. Durable for daily use.',
-    features: ['Sweat Absorbent', 'Color Fastness', 'Tear Resistant'],
+    subcategory: 'House Blazers',
+    price: 55000,
+    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80&w=800',
+    description: 'Wool-blend premium school blazers with custom embroidered crest.',
+    features: ['Anti-Wrinkle', 'Color Fastness', 'Tailored Fit'],
     gstRate: 5,
-    hsnCode: '6203'
+    hsnCode: '6203',
+    stockStatus: 'In Stock'
   }
 ];
 
 export const STATS = [
-  { label: 'Total Main Categories', value: '8' },
-  { label: 'Active Products', value: '100+' },
-  { label: 'Partner Schools', value: '500+' },
-  { label: 'GST Compliance', value: '100%' }
+  { label: 'Active Institutions', value: '1,250+' },
+  { label: 'Products Cataloged', value: '2,500+' },
+  { label: 'States Served', value: '22+' },
+  { label: 'Satisfied Clients', value: '10k+' }
 ];

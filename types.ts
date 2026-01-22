@@ -13,6 +13,8 @@ export interface Product {
   hsnCode?: string;
   specifications?: Record<string, string>;
   minQuantity?: number;
+  stockStatus: 'In Stock' | 'Low Stock' | 'Out of Stock';
+  tags?: string[];
 }
 
 export interface CartItem extends Product {
@@ -26,9 +28,9 @@ export interface Order {
   phone: string;
   items: CartItem[];
   total: number;
-  status: 'Pending' | 'Processing' | 'Shipped' | 'Delivered';
+  status: 'Pending' | 'Processing' | 'Shipped' | 'Delivered' | 'Cancelled';
   date: string;
-  paymentStatus: 'Paid' | 'Unpaid';
+  paymentStatus: 'Paid' | 'Unpaid' | 'Refunded';
 }
 
 export interface Category {

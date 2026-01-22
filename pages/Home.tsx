@@ -1,8 +1,7 @@
 
 import React from 'react';
-import { ArrowRight, Printer, BookOpen, GraduationCap, Zap, CheckCircle, Quote, MessageSquare, PenTool } from 'lucide-react';
+import { ArrowRight, Printer, BookOpen, GraduationCap, Zap, CheckCircle, Quote, MessageSquare, PenTool, Truck, Package, Globe, Shop } from 'lucide-react';
 import { Link } from 'react-router-dom';
-// Fix: Import INITIAL_PRODUCTS as PRODUCTS since PRODUCTS is not exported from constants.tsx
 import { CATEGORIES, STATS, INITIAL_PRODUCTS as PRODUCTS } from '../constants';
 
 const Home: React.FC = () => {
@@ -26,6 +25,73 @@ const Home: React.FC = () => {
               <Link to="/quote" className="text-lg font-semibold leading-6 text-white hover:text-secondary transition-colors">
                 Get Instant Quote <span aria-hidden="true">→</span>
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Wholesale & Logistics Section */}
+      <section className="py-24 bg-gray-50 border-b overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="order-2 lg:order-1">
+              <div className="inline-flex items-center gap-2 bg-blue-100 text-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                <Truck size={14} /> Logistics Excellence
+              </div>
+              <h2 className="text-4xl font-display font-bold text-primary mb-6">
+                Wholesale & Retail Solutions with <span className="text-secondary">Guaranteed Delivery</span>
+              </h2>
+              <p className="text-gray-600 text-lg mb-10 leading-relaxed">
+                We bridge the gap between quality and accessibility. Whether you need a single item or a bulk shipment for an entire district, our logistics network ensures your supplies arrive on time, every time.
+              </p>
+              
+              <div className="grid sm:grid-cols-2 gap-8">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-white text-secondary rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-orange-100"><Package size={24} /></div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900 mb-1">Dhanbad Doorstep</h3>
+                    <p className="text-sm text-gray-500">Free direct doorstep delivery for all institutions within Dhanbad city limits.</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 bg-white text-primary rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-blue-100"><Globe size={24} /></div>
+                  <div>
+                    <h3 className="font-bold text-lg text-gray-900 mb-1">Pan-India Courier</h3>
+                    <p className="text-sm text-gray-500">Dedicated partnerships with top courier services for delivery anywhere in India.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-12 p-6 bg-white rounded-3xl border border-gray-100 shadow-xl flex items-center gap-6">
+                <div className="bg-accent/10 text-accent p-4 rounded-2xl">
+                  <CheckCircle size={32} />
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900">Wholesale Pricing for Everyone</p>
+                  <p className="text-sm text-gray-500">Enjoy competitive bulk rates even on medium-sized retail orders.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="order-1 lg:order-2 relative">
+              <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative z-10">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1000" alt="Logistics and Delivery" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute -top-10 -right-10 w-64 h-64 bg-secondary rounded-full opacity-10 blur-3xl"></div>
+              <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary rounded-full opacity-10 blur-3xl"></div>
+              
+              {/* Floating Badge */}
+              <div className="absolute bottom-10 -right-5 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 z-20 animate-bounce-slow">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-green-50 text-accent rounded-full flex items-center justify-center">
+                    <Truck size={20} />
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold text-gray-400 uppercase">Status</p>
+                    <p className="font-bold text-primary">Live Tracking Enabled</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -58,7 +124,6 @@ const Home: React.FC = () => {
                   {cat.id === 'school' && <BookOpen size={32} />}
                   {cat.id === 'textiles' && <GraduationCap size={32} />}
                   {cat.id === 'it' && <Zap size={32} />}
-                  {/* Fix: Added missing import for PenTool */}
                   {cat.id === 'stationery' && <PenTool size={32} />}
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{cat.name}</h3>
@@ -156,6 +221,16 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      <style>{`
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 4s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
-import { Phone, MapPin, Clock, MessageSquare, Send, CheckCircle } from 'lucide-react';
-import { CONTACTS } from '../constants';
+import { Phone, MapPin, Clock, MessageSquare, Send, CheckCircle, Smartphone, Truck, ShieldCheck } from 'lucide-react';
+import { CONTACTS, SOCIAL_LINKS, BRANCHES } from '../constants';
 
 const Contact: React.FC = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success'>('idle');
@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Connect with <span className="text-secondary">Enterprise</span></h1>
           <p className="text-blue-100 max-w-2xl mx-auto text-lg md:text-xl">
-            Direct access to our supervisors, technical experts, and support staff for all your institutional needs.
+            Multiple branches across Dhanbad and Govindpur to serve you better. Direct access to our supervisors and logistics team.
           </p>
         </div>
       </section>
@@ -32,13 +32,13 @@ const Contact: React.FC = () => {
         <div className="space-y-12">
           <div>
             <h2 className="text-3xl font-display font-bold text-gray-900 mb-4">Official Channels</h2>
-            <p className="text-gray-600 mb-8">Reach out to the specific department for the fastest response.</p>
+            <p className="text-gray-600 mb-8">Reach out to our specific branches or core support team for technical help.</p>
             
             <div className="grid sm:grid-cols-2 gap-4">
               {CONTACTS.map((c, i) => (
                 <a 
                   key={i} 
-                  href={`tel:${c.number}`}
+                  href={`tel:${c.number.replace(/\s+/g, '')}`}
                   className="flex gap-4 items-center p-6 rounded-2xl bg-gray-50 border border-gray-100 hover:border-primary hover:bg-white hover:shadow-xl transition-all group"
                 >
                   <div className="p-3 bg-white group-hover:bg-primary group-hover:text-white rounded-xl shadow-sm text-primary transition-colors">
@@ -51,20 +51,42 @@ const Contact: React.FC = () => {
                 </a>
               ))}
             </div>
+            
+            <div className="mt-8 flex flex-col gap-4">
+              <a 
+                href={SOCIAL_LINKS.whatsapp_primary} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 rounded-2xl font-bold hover:opacity-90 transition-all shadow-lg"
+              >
+                <Smartphone size={24} /> Chat with us on WhatsApp (+91 9973727063)
+              </a>
+            </div>
           </div>
 
           <div className="space-y-10 border-t pt-10">
-            <div className="flex gap-6">
-              <div className="p-4 bg-blue-50 text-primary rounded-2xl shrink-0 h-fit"><MapPin size={28} /></div>
+            <h3 className="text-2xl font-display font-bold text-gray-900">Our Branches</h3>
+            {BRANCHES.map((branch, idx) => (
+              <div key={idx} className="flex gap-6 p-8 bg-gray-50 rounded-[2rem] border border-gray-100">
+                <div className="p-4 bg-white text-primary rounded-2xl shadow-sm shrink-0 h-fit"><MapPin size={28} /></div>
+                <div>
+                  <h4 className="text-xl font-bold mb-2 text-primary">{branch.name}</h4>
+                  {branch.manager && <p className="text-xs font-bold text-secondary uppercase mb-2">Manager: {branch.manager}</p>}
+                  <p className="text-gray-600 leading-relaxed text-md mb-4">{branch.address}</p>
+                  {branch.landmark && <p className="text-xs text-gray-400 font-bold uppercase mb-4">Landmark: {branch.landmark}</p>}
+                  <div className="flex items-center gap-2 text-primary font-bold">
+                    <Phone size={14} /> {branch.phone}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <div className="flex gap-6 p-8 bg-blue-50 rounded-[2rem] border border-blue-100">
+              <div className="p-4 bg-white text-accent rounded-2xl shadow-sm shrink-0 h-fit"><Truck size={28} /></div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Registered HQ Address</h3>
-                <p className="text-gray-600 leading-relaxed text-lg">
-                  Anand Printek Enterprise<br />
-                  CO Gyan Prakash Jha, H. No. 202A<br />
-                  Kenduapul Jharia Road, Near Durga Mandir<br />
-                  Dhanbad, Jharkhand - 826001<br />
-                  <span className="text-primary font-bold mt-2 inline-block">Landmark: Shakti Decorator Godown</span>
-                </p>
+                <h3 className="text-xl font-bold mb-2 text-blue-900">Wholesale Logistics</h3>
+                <p className="text-blue-800 text-sm font-medium mb-1">Dhanbad: Free Doorstep Delivery</p>
+                <p className="text-blue-600 text-sm">Pan-India: Professional Courier Network delivery to any state.</p>
               </div>
             </div>
 
@@ -147,14 +169,14 @@ const Contact: React.FC = () => {
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="bg-white/95 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/20 text-center max-w-sm mx-4">
             <h3 className="text-xl font-bold text-primary mb-2">Location Strategy</h3>
-            <p className="text-gray-600 mb-6 text-sm">Centrally located in Dhanbad to serve the Jharkhand and Bihar educational hubs efficiently.</p>
+            <p className="text-gray-600 mb-6 text-sm">Centrally located in Dhanbad and Govindpur to serve the Jharkhand and Bihar educational hubs efficiently.</p>
             <a 
               href="https://www.google.com/maps/search/Kenduapul+Jharia+Road+Dhanbad" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-block bg-primary text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg"
             >
-              Get Directions
+              View Branches on Map
             </a>
           </div>
         </div>
